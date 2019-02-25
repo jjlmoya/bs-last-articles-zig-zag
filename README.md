@@ -1,4 +1,7 @@
-# bs-last-articles-zig-zag
+ `npm start`
+- Use to compile and run the block in development mode.
+- Watches for any changes and reports back any errors in your code.
 
- https://www.bonseo.es/wordpress-gutenberg-blocks/ultimos-articulos-zig-zag
- Description: Un bloque Gutenberg que muestra los últimos artículos en ZigZag
+`npm run build`
+- Use to build production code for your block inside `dist` folder.
+- Runs once and reports back the gzip file sizes of the produced code.
