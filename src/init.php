@@ -139,7 +139,6 @@ function render_bs_last_articles_zig_zag($attributes)
 	} else {
 		$POST_TO_SHOW = 5;
 	}
-	echo $POST_TO_SHOW;
 	$posts = wp_get_recent_posts([
 		'numberposts' => $POST_TO_SHOW,
 		'post_status' => 'publish',
