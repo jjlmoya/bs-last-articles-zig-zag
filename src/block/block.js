@@ -12,9 +12,9 @@ const {__} = wp.i18n;
 const {registerBlockType} = wp.blocks;
 const {TextControl} = wp.components;
 registerBlockType('bonseo/block-bs-last-articles-zig-zag', {
-	title: __('bs-last-articles-zig-zag - BonSeo'),
+	title: __('Last Articles Zig-Zag'),
 	icon: 'editor-ol',
-	category: 'common',
+	category: 'bonseo-blocks',
 	keywords: [
 		__('bs-last-articles-zig-zag'),
 		__('BonSeo'),

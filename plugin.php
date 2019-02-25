@@ -11,9 +11,24 @@
  * @package BS
  */
 
-// Exit if accessed directly.
 if (!defined('ABSPATH')) {
 	exit;
+}
+if (!function_exists('bs_create_block_category')) {
+	function bs_create_block_category($categories, $post)
+	{
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug' => 'bonseo-blocks',
+					'title' => __('BonSeo', 'bonseo-blocks'),
+				),
+			)
+		);
+	}
+
+	add_filter('block_categories', 'bs_create_block_category', 10, 2);
 }
 
 require_once plugin_dir_path(__FILE__) . 'src/init.php';
