@@ -25,6 +25,12 @@ register_block_type('bonseo/' . $block,
 			'max_posts' => array(
 				'type' => 'string',
 			),
+			'cta' => array(
+				'type' => 'string',
+			),
+			'words' => array(
+				'type' => 'string',
+			),
 		),
 		'render_callback' => 'render_bs_last_articles_zig_zag',
 	)
@@ -77,7 +83,7 @@ function bs_last_articles_zig_zag_editor_assets()
 	);
 }
 
-function render_bs_last_articles_zig_zag_element($post, $isReverse)
+function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words)
 {
 	$modifier = $isReverse ? 'is-reverse' : '';
 	$post_id = $post['ID'];
@@ -108,20 +114,20 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse)
 				<h3 class="a-text a-text--l  l-column--1-1">
 					' . esc_html(get_the_title($post_id)) . '
 				</h3>
-				<div class="entry-resume-content a-pad"> ' . wp_trim_words($description, 20, '...') . '</div>
+				<div class="entry-resume-content a-pad"> ' . wp_trim_words($description, $words, '...') . '</div>
 				<a href="' . esc_url(get_the_permalink($post_id)) . '" class="a-button a-button--rounded a-button--s a-button--secondary l-flex--align-center">
-					Leer Más
+					' .$cta. '
 				</a>
 			</div>
 		</div>';
 }
 
 
-function render_bs_banner_posts($posts)
+function render_bs_banner_posts($posts, $cta, $words)
 {
 	$html = '';
 	foreach ($posts as $key => $post) {
-		$html .= render_bs_last_articles_zig_zag_element($post, $key % 2 == 0);
+		$html .= render_bs_last_articles_zig_zag_element($post, $key % 2 == 0, $cta, $words);
 	}
 	return $html;
 }
@@ -146,7 +152,7 @@ function render_bs_last_articles_zig_zag($attributes)
 		<h2 class="a-text a-text--xl  a-text--center a-text--bold a-pad">
         	' . $attributes['content'] . '
    		</h2>
-   		' . render_bs_banner_posts($posts) . '
+   		' . render_bs_banner_posts($posts, $attributes['cta'], $attributes['words']) . '
 	</section>';
 
 }
