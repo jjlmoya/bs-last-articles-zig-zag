@@ -22,10 +22,10 @@ Es configurable en:
 > - CTA: Más
 > - Número de Palabras: 40
 
-*Para más información*:
-[Bloque de Últimos Artículos en ZigZag](https://khan.github.io/KaTeX/)
-[Repositorio](https://gitlab.com/bonseo-guttenberg/bs-last-articles-zig-zag)
+`Para más información`:
+- [Bloque de Últimos Artículos en ZigZag](https://khan.github.io/KaTeX/)
+- [Repositorio](https://gitlab.com/bonseo-guttenberg/bs-last-articles-zig-zag)
 
-Obtener más bloques:
-[Bloques Guttenberg BonSeo](https://www.bonseo.es/wordpress-gutenberg)
-[Obtener Ayuda](https://www.bonseo.es/)
+`Obtener más bloques`:
+- [Bloques Guttenberg BonSeo](https://www.bonseo.es/wordpress-gutenberg)
+- [Obtener Ayuda](https://www.bonseo.es/)
