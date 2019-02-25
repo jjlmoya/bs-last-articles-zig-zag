@@ -45,6 +45,7 @@ function bs_last_articles_zig_zag_assets()
 		array('wp-editor')
 	);
 }
+
 add_action('enqueue_block_assets', 'bs_last_articles_zig_zag_assets');
 
 /**
@@ -127,17 +128,16 @@ function render_bs_banner_posts($posts)
 
 function render_bs_last_articles_zig_zag($attributes)
 {
-	if ($attributes['max_posts']) {
+	if (isset ($attributes['max_posts'])) {
 		$POST_TO_SHOW = $attributes['max_posts'];
 	} else {
 		$POST_TO_SHOW = 5;
 	}
-
+	echo $POST_TO_SHOW;
 	$posts = wp_get_recent_posts([
 		'numberposts' => $POST_TO_SHOW,
 		'post_status' => 'publish',
 	]);
-
 	if (empty($posts)) {
 		return '';
 	}
