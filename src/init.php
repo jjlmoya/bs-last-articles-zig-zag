@@ -107,7 +107,7 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words
 					l-flex
 					l-flex--direction-column
 					l-flex--justify-space-around
-					
+					l-flex--align-center
 					l-column--1-2
 					l-column--mobile--1-1
 					a-pad--x-40">
