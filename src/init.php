@@ -31,28 +31,13 @@ register_block_type('bonseo/' . $block,
 			'words' => array(
 				'type' => 'string',
 			),
+			'className' => array(
+				'type' => 'string',
+			)
 		),
 		'render_callback' => 'render_bs_last_articles_zig_zag',
 	)
 );
-
-
-/**
- * Enqueue Gutenberg block assets for both frontend + backend.
- *
- * @uses {wp-editor} for WP editor styles.
- * @since 1.0.0
- */
-function bs_last_articles_zig_zag_assets()
-{
-	wp_enqueue_style(
-		'bs_last_articles_zig_zag-style-css',
-		plugins_url('dist/blocks.style.build.css', dirname(__FILE__)),
-		array('wp-editor')
-	);
-}
-
-add_action('enqueue_block_assets', 'bs_last_articles_zig_zag_assets');
 
 /**
  * Enqueue Gutenberg block assets for backend editor.
@@ -73,14 +58,6 @@ function bs_last_articles_zig_zag_editor_assets()
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: File modification time.
 		true // Enqueue the script in the footer.
 	);
-
-	// Styles.
-	wp_enqueue_style(
-		'bs_last_articles_zig_zag-block-editor-css', // Handle.
-		plugins_url('dist/blocks.editor.build.css', dirname(__FILE__)), // Block editor CSS.
-		array('wp-edit-blocks') // Dependency to include the CSS after it.
-	// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
-	);
 }
 
 function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words)
@@ -91,7 +68,7 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words
 		$seoDescription = get_field('seoDescription', $post_id);
 		$description = $seoDescription ? $seoDescription : get_the_excerpt($post_id);
 	} else {
-		$description = $post['post_content'];
+		$description = get_the_excerpt($post_id);
 	}
 
 	return '
@@ -106,17 +83,16 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words
 			<div class="ml-article-extract__content
 					l-flex
 					l-flex--direction-column
-					l-flex--justify-space-around
-					
+					l-flex--justify-space-around	
 					l-column--1-2
 					l-column--mobile--1-1
 					a-pad--x-40">
-				<h3 class="a-text a-text--l  l-column--1-1">
+				<h3 class="a-text a-text--l l-column--1-1">
 					' . esc_html(get_the_title($post_id)) . '
 				</h3>
 				<div class="entry-resume-content a-pad"> ' . wp_trim_words($description, $words, '...') . '</div>
 				<a href="' . esc_url(get_the_permalink($post_id)) . '" class="a-button a-button--rounded a-button--s a-button--secondary l-flex--align-center">
-					' .$cta. '
+					' . $cta . '
 				</a>
 			</div>
 		</div>';
@@ -134,24 +110,26 @@ function render_bs_banner_posts($posts, $cta, $words)
 
 function render_bs_last_articles_zig_zag($attributes)
 {
-	if (isset ($attributes['max_posts'])) {
-		$POST_TO_SHOW = $attributes['max_posts'];
-	} else {
-		$POST_TO_SHOW = 5;
-	}
+
+	$entries = $attributes['max_posts'] ? $attributes['max_posts'] : 5;
+	$title = $attributes['content'] ? $attributes['content'] : '';
+	$cta = $attributes['cta'] ? $attributes['cta'] : 'Leer';
+	$words = $attributes['words'] ? $attributes['words'] : 20;
+	$class = $attributes['className'] ? $attributes['className'] : '';
+
 	$posts = wp_get_recent_posts([
-		'numberposts' => $POST_TO_SHOW,
+		'numberposts' => $entries,
 		'post_status' => 'publish',
 	]);
 	if (empty($posts)) {
 		return '';
 	}
 	return '
-	<section class="og-articles-zigzag a-pad-20">
+	<section class="og-articles-zigzag a-pad-2 '. $class .'">
 		<h2 class="a-text a-text--xl  a-text--center a-text--bold a-pad">
-        	' . $attributes['content'] . '
+        	' . $title . '
    		</h2>
-   		' . render_bs_banner_posts($posts, $attributes['cta'], $attributes['words']) . '
+   		' . render_bs_banner_posts($posts, $cta, $words) . '
 	</section>';
 
 }

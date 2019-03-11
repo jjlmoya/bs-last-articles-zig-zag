@@ -16,11 +16,6 @@ Es configurable en:
 - Número de Post
 - CTA Botón 
 - Número de palabras
-> Los valores por defecto son:
-> - Título: Artículos Relacionados
-> - Número de Post: 5
-> - CTA: Más
-> - Número de Palabras: 40
 
 `Para más información`
 - [Bloque de Últimos Artículos en ZigZag](https://www.bonseo.es/wordpress-gutenberg/ultimos-articulos-zigzag)
