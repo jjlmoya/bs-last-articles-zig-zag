@@ -64,7 +64,7 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words
 {
 	$modifier = $isReverse ? 'is-reverse' : '';
 	$post_id = $post['ID'];
-	$brand = get_post_meta($post_id(), 'bs_theme_brand', TRUE);
+	$brand = get_post_meta($post_id, 'bs_theme_brand', TRUE);
 	$brand = isset($brand) ? $brand : '';
 	if (function_exists('get_field')) {
 		$seoDescription = get_field('seoDescription', $post_id);
