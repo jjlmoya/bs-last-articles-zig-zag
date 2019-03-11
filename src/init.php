@@ -64,6 +64,8 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words
 {
 	$modifier = $isReverse ? 'is-reverse' : '';
 	$post_id = $post['ID'];
+	$brand = get_post_meta($post_id(), 'bs_theme_brand', TRUE);
+	$brand = isset($brand) ? $brand : '';
 	if (function_exists('get_field')) {
 		$seoDescription = get_field('seoDescription', $post_id);
 		$description = $seoDescription ? $seoDescription : get_the_excerpt($post_id);
@@ -72,7 +74,7 @@ function render_bs_last_articles_zig_zag_element($post, $isReverse, $cta, $words
 	}
 
 	return '
-		<div class="ml-article-extract l-flex l-flex--wrap a-pad ' . $modifier . '">
+		<div class="ml-article-extract l-flex l-flex--wrap a-pad ' . $modifier . ' ' . $brand . '">
 			<div class="ml-article-extract__image l-column--1-2 l-column--mobile--1-1">
 				<picture class="">
 					<img style="width:100%; object-fit: cover;" 
@@ -125,7 +127,7 @@ function render_bs_last_articles_zig_zag($attributes)
 		return '';
 	}
 	return '
-	<section class="og-articles-zigzag a-pad-2 '. $class .'">
+	<section class="og-articles-zigzag a-pad-2 ' . $class . '">
 		<h2 class="a-text a-text--xl  a-text--center a-text--bold a-pad">
         	' . $title . '
    		</h2>
