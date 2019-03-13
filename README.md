@@ -18,9 +18,9 @@ Es configurable en:
 - Número de palabras
 
 `Para más información`
-- [Bloque de Últimos Artículos en ZigZag](https://www.bonseo.es/wordpress-gutenberg/ultimos-articulos-zigzag)
+- [Bloque de Últimos Artículos en ZigZag](https://www.bonseo.es/bloques-gutenberg/ultimos-articulos-zigzag)
 - [Repositorio](https://gitlab.com/bonseo-guttenberg/bs-last-articles-zig-zag)
 
 `Obtener más bloques`
-- [Bloques Guttenberg BonSeo](https://www.bonseo.es/wordpress-gutenberg)
+- [Bloques Guttenberg BonSeo](https://www.bonseo.es/bloques-gutenberg)
 - [Obtener Ayuda](https://www.bonseo.es/)

@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Last Articles ZigZag [BonSeo Block]
- * Plugin URI: https://www.bonseo.es/wordpress-gutenberg-blocks/ultimos-articulos-zig-zag
+ * Plugin URI: https://www.bonseo.es/bloques-gutenberg/ultimos-articulos-zig-zag
  * Description: Un bloque Gutenberg que muestra los últimos artículos en ZigZag
  * Author: jjlmoya
  * Author URI: https://www.bonseo.es/
