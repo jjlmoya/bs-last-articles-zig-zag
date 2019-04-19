@@ -113,11 +113,11 @@ function render_bs_banner_posts($posts, $cta, $words)
 function render_bs_last_articles_zig_zag($attributes)
 {
 
-	$entries = $attributes['max_posts'] ? $attributes['max_posts'] : 5;
-	$title = $attributes['content'] ? $attributes['content'] : '';
-	$cta = $attributes['cta'] ? $attributes['cta'] : 'Leer';
-	$words = $attributes['words'] ? $attributes['words'] : 20;
-	$class = $attributes['className'] ? $attributes['className'] : '';
+	$entries = isset($attributes['max_posts']) ? $attributes['max_posts'] : 5;
+	$title = isset($attributes['content']) ? $attributes['content'] : '';
+	$cta = isset($attributes['cta']) ? $attributes['cta'] : 'Leer';
+	$words = isset($attributes['words']) ? $attributes['words'] : 20;
+	$class = isset($attributes['className']) ? $attributes['className'] : '';
 
 	$posts = wp_get_recent_posts([
 		'numberposts' => $entries,
